@@ -37,6 +37,7 @@ const schema = z.object({
   instagram: z.string(),
   youtube: z.string(),
   website: z.string(),
+  whatsapp: z.string(),
   seo_title: z.string(),
   seo_description: z.string(),
   seo_keywords: z.string(),
@@ -71,6 +72,7 @@ export default function AdminProfilePage() {
       instagram: "",
       youtube: "",
       website: "",
+      whatsapp: "http://wa.me/+8801522125856",
       seo_title: "",
       seo_description: "",
       seo_keywords: "",
@@ -108,6 +110,7 @@ export default function AdminProfilePage() {
           instagram: data.socials?.instagram || "",
           youtube: data.socials?.youtube || "",
           website: data.socials?.website || "",
+          whatsapp: data.socials?.whatsapp || "http://wa.me/+8801522125856",
           seo_title: data.seo_title || "",
           seo_description: data.seo_description || "",
           seo_keywords: (data.seo_keywords || []).join(", "),
@@ -141,6 +144,7 @@ export default function AdminProfilePage() {
           instagram: v.instagram,
           youtube: v.youtube,
           website: v.website,
+          whatsapp: v.whatsapp,
         },
         seo_title: v.seo_title,
         seo_description: v.seo_description,
@@ -433,6 +437,14 @@ export default function AdminProfilePage() {
           <div className="space-y-2">
             <Label htmlFor="social-website">Website URL</Label>
             <Input id="social-website" {...form.register("website")} placeholder="https://..." />
+          </div>
+          <div className="space-y-2 md:col-span-2">
+            <Label htmlFor="social-whatsapp">WhatsApp URL</Label>
+            <Input
+              id="social-whatsapp"
+              {...form.register("whatsapp")}
+              placeholder="http://wa.me/+8801522125856"
+            />
           </div>
         </CardContent>
       </Card>

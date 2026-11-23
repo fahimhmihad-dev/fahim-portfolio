@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { SiGithub, SiInstagram, SiX, SiYoutube } from "react-icons/si";
-import { FaLinkedin } from "react-icons/fa6";
+import { FaLinkedin, FaWhatsapp } from "react-icons/fa6";
 import { Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { SocialLinks } from "@/types/database";
@@ -21,6 +21,7 @@ export default function SocialMediaButtons({ socials }: { socials: SocialLinks }
     { name: "X / Twitter", href: socials.twitter, icon: <SiX size={16} /> },
     { name: "Instagram", href: socials.instagram, icon: <SiInstagram size={18} /> },
     { name: "YouTube", href: socials.youtube, icon: <SiYoutube size={18} /> },
+    { name: "WhatsApp", href: socials.whatsapp, icon: <FaWhatsapp size={18} /> },
     { name: "Website", href: socials.website, icon: <Globe size={18} /> },
   ];
 

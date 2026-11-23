@@ -26,6 +26,7 @@ export const DEFAULT_PROFILE: Profile = {
     github: "https://github.com/fahimhmihad",
     linkedin: "https://linkedin.com/in/fahimhmihad",
     twitter: "https://x.com/fahimhmihad",
+    whatsapp: "http://wa.me/+8801522125856",
   },
   seo_title: "Fahim H. Mihad | Full Stack Web Developer",
   seo_description:

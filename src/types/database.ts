@@ -6,6 +6,7 @@ export interface SocialLinks {
   facebook?: string;
   youtube?: string;
   website?: string;
+  whatsapp?: string;
 }
 
 export type PhotoAnimationStyle = "float" | "tilt" | "minimal";

@@ -26,6 +26,7 @@ const profileSchema = z.object({
       facebook: z.string().optional().default(""),
       youtube: z.string().optional().default(""),
       website: z.string().optional().default(""),
+      whatsapp: z.string().optional().default(""),
     })
     .default({
       github: "",
@@ -35,6 +36,7 @@ const profileSchema = z.object({
       facebook: "",
       youtube: "",
       website: "",
+      whatsapp: "",
     }),
   seo_title: z.string().max(160).default(""),
   seo_description: z.string().max(400).default(""),
