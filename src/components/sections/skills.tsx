@@ -38,7 +38,7 @@ export default function SkillsSection({
     >
       <SectionHeader
         id="skills"
-        title="Tech Stack"
+        title="Menifto"
         desc={showGrid ? "Tools & technologies I build with" : "(hint: hover, tap, or press a key)"}
         className={showGrid ? "static mb-14" : "mb-40"}
       />
