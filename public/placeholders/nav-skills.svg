@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <rect width="600" height="400" rx="20" fill="#020817"/>
+  <rect x="24" y="24" width="552" height="352" rx="14" fill="#0b1224" stroke="#1e293b"/>
+  <text x="300" y="90" text-anchor="middle" fill="#f8fafc" font-family="system-ui,sans-serif" font-size="30" font-weight="800">TECH STACK</text>
+  <g transform="translate(115 130)">
+    <rect x="0" y="0" width="82" height="58" rx="12" fill="#3178c6"/>
+    <rect x="96" y="0" width="82" height="58" rx="12" fill="#f0db4f"/>
+    <rect x="192" y="0" width="82" height="58" rx="12" fill="#61dafb"/>
+    <rect x="288" y="0" width="82" height="58" rx="12" fill="#f8fafc"/>
+    <rect x="0" y="72" width="82" height="58" rx="12" fill="#38bdf8"/>
+    <rect x="96" y="72" width="82" height="58" rx="12" fill="#6cc24a"/>
+    <rect x="192" y="72" width="82" height="58" rx="12" fill="#3ecf8e"/>
+    <rect x="288" y="72" width="82" height="58" rx="12" fill="#a855f7"/>
+    <rect x="0" y="144" width="82" height="58" rx="12" fill="#2496ed"/>
+    <rect x="96" y="144" width="82" height="58" rx="12" fill="#f1502f"/>
+    <rect x="192" y="144" width="82" height="58" rx="12" fill="#ff9900"/>
+    <rect x="288" y="144" width="82" height="58" rx="12" fill="#ec4899"/>
+  </g>
+</svg>

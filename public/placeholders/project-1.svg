@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <rect width="1200" height="800" fill="#090d16"/>
+  <rect x="0" y="0" width="1200" height="52" fill="#0f172a"/>
+  <circle cx="28" cy="26" r="6" fill="#ef4444"/>
+  <circle cx="48" cy="26" r="6" fill="#f59e0b"/>
+  <circle cx="68" cy="26" r="6" fill="#22c55e"/>
+  <rect x="420" y="14" width="360" height="24" rx="12" fill="#1e293b"/>
+  <rect x="32" y="84" width="220" height="684" rx="16" fill="#0f172a" stroke="#1e293b"/>
+  <rect x="56" y="112" width="120" height="16" rx="6" fill="#38bdf8"/>
+  <rect x="56" y="154" width="172" height="36" rx="8" fill="#1e293b"/>
+  <rect x="56" y="204" width="144" height="28" rx="8" fill="#111827"/>
+  <rect x="56" y="246" width="156" height="28" rx="8" fill="#111827"/>
+  <rect x="56" y="288" width="132" height="28" rx="8" fill="#111827"/>
+  <rect x="280" y="84" width="280" height="140" rx="16" fill="#0f172a" stroke="#1e293b"/>
+  <rect x="584" y="84" width="280" height="140" rx="16" fill="#0f172a" stroke="#1e293b"/>
+  <rect x="888" y="84" width="280" height="140" rx="16" fill="#0f172a" stroke="#1e293b"/>
+  <text x="308" y="130" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="18">ACTIVE USERS</text>
+  <text x="308" y="182" fill="#f8fafc" font-family="system-ui,sans-serif" font-size="42" font-weight="700">48.2K</text>
+  <text x="612" y="130" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="18">UPTIME</text>
+  <text x="612" y="182" fill="#34d399" font-family="system-ui,sans-serif" font-size="42" font-weight="700">99.98%</text>
+  <text x="916" y="130" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="18">P95 LATENCY</text>
+  <text x="916" y="182" fill="#38bdf8" font-family="system-ui,sans-serif" font-size="42" font-weight="700">42ms</text>
+  <rect x="280" y="252" width="888" height="330" rx="16" fill="#0f172a" stroke="#1e293b"/>
+  <path d="M320 510 C420 470, 480 340, 580 390 C680 440, 740 310, 840 340 C940 370, 1020 290, 1120 315 L1120 540 L320 540 Z" fill="url(#g1)" opacity="0.35"/>
+  <path d="M320 510 C420 470, 480 340, 580 390 C680 440, 740 310, 840 340 C940 370, 1020 290, 1120 315" stroke="#38bdf8" stroke-width="4" fill="none"/>
+  <rect x="280" y="608" width="888" height="160" rx="16" fill="#0f172a" stroke="#1e293b"/>
+  <text x="312" y="655" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="22" font-weight="600">PulseBoard Analytics — Sample Preview</text>
+  <text x="312" y="692" fill="#64748b" font-family="system-ui,sans-serif" font-size="17">Upload your real project screenshots anytime from /admin/projects</text>
+  <defs>
+    <linearGradient id="g1" x1="320" y1="290" x2="320" y2="540" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <rect width="600" height="400" rx="20" fill="#020817"/>
+  <rect x="24" y="24" width="552" height="352" rx="14" fill="#0b1224" stroke="#1e293b"/>
+  <text x="56" y="140" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="16">HI, I AM</text>
+  <text x="56" y="200" fill="#f8fafc" font-family="system-ui,sans-serif" font-size="44" font-weight="800">Fahim H. Mihad</text>
+  <text x="56" y="240" fill="#64748b" font-family="system-ui,sans-serif" font-size="18">Full Stack Web Developer</text>
+  <rect x="56" y="274" width="120" height="36" rx="8" fill="#f8fafc"/>
+  <rect x="190" y="274" width="96" height="36" rx="8" stroke="#475569"/>
+</svg>
