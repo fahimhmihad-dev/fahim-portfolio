@@ -3,11 +3,9 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import styles from "./style.module.scss";
 import { blur, translate } from "../anim";
 import type { NavLinkItem } from "@/types/database";
 import { cn } from "@/lib/utils";
-import FunnyThemeToggle from "@/components/theme/funny-theme-toggle";
 
 interface SelectedLink {
   isActive: boolean;
@@ -32,7 +30,7 @@ export default function NavBody({
   const getChars = (word: string) =>
     word.split("").map((char, i) => (
       <motion.span
-        className="pointer-events-none"
+        className="pointer-events-none inline-block"
         custom={[i * 0.02, (word.length - i) * 0.01] as [number, number]}
         variants={translate}
         initial="initial"
@@ -45,26 +43,26 @@ export default function NavBody({
     ));
 
   return (
-    <div
-      className={cn(styles.body, "flex flex-col items-end md:flex-row")}
+    <nav
+      aria-label="Primary navigation"
+      className="flex flex-col items-start md:flex-row md:flex-wrap gap-x-8 gap-y-3 mt-4 lg:mt-8 max-w-3xl"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="mb-2 flex md:hidden">
-        <FunnyThemeToggle className="w-8 h-8" />
-      </div>
       {links.map((link, index) => {
         const isCurrent = pathname === link.href;
         return (
           <Link
             key={`${link.href}-${index}`}
             href={link.href}
-            className="cursor-can-hover rounded-lg"
+            className="cursor-can-hover rounded-lg uppercase no-underline"
             onClick={() => setIsActive(false)}
           >
             <motion.p
               className={cn(
-                "font-display rounded-lg transition-colors",
-                isCurrent ? "text-foreground underline underline-offset-8" : "text-muted-foreground hover:text-foreground"
+                "font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight flex overflow-hidden m-0 py-1 transition-colors",
+                isCurrent
+                  ? "text-foreground underline underline-offset-8 decoration-2"
+                  : "text-muted-foreground hover:text-foreground"
               )}
               onMouseOver={() => setSelectedLink({ isActive: true, index })}
               onMouseLeave={() => setSelectedLink({ isActive: false, index })}
@@ -78,6 +76,6 @@ export default function NavBody({
           </Link>
         );
       })}
-    </div>
+    </nav>
   );
 }

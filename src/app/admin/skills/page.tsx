@@ -37,20 +37,20 @@ import MediaUploader from "@/components/admin/media-uploader";
 import type { Skill } from "@/types/database";
 
 const PRESET_ICONS: Array<{ label: string; url: string; color: string }> = [
-  { label: "TypeScript", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", color: "#3178c6" },
-  { label: "JavaScript", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", color: "#f0db4f" },
-  { label: "React", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", color: "#61dafb" },
-  { label: "Next.js", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", color: "#ffffff" },
-  { label: "Tailwind", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", color: "#38bdf8" },
-  { label: "Node.js", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg", color: "#6cc24a" },
-  { label: "Python", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg", color: "#3776ab" },
-  { label: "Go", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg", color: "#00add8" },
-  { label: "Rust", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg", color: "#dea584" },
-  { label: "PostgreSQL", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", color: "#336791" },
-  { label: "Supabase", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg", color: "#3ecf8e" },
-  { label: "Docker", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg", color: "#2496ed" },
-  { label: "AWS", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg", color: "#ff9900" },
-  { label: "GraphQL", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg", color: "#e535ab" },
+  { label: "TypeScript", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/typescript/typescript-original.svg", color: "#3178c6" },
+  { label: "JavaScript", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg", color: "#f0db4f" },
+  { label: "React", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg", color: "#61dafb" },
+  { label: "Next.js", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nextjs/nextjs-original.svg", color: "#ffffff" },
+  { label: "Tailwind", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tailwindcss/tailwindcss-original.svg", color: "#38bdf8" },
+  { label: "Node.js", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nodejs/nodejs-original.svg", color: "#6cc24a" },
+  { label: "Python", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg", color: "#3776ab" },
+  { label: "Go", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/go/go-original.svg", color: "#00add8" },
+  { label: "Rust", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/rust/rust-original.svg", color: "#dea584" },
+  { label: "PostgreSQL", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg", color: "#336791" },
+  { label: "Supabase", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/supabase/supabase-original.svg", color: "#3ecf8e" },
+  { label: "Docker", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/docker/docker-original.svg", color: "#2496ed" },
+  { label: "AWS", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", color: "#ff9900" },
+  { label: "GraphQL", url: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/graphql/graphql-plain.svg", color: "#e535ab" },
 ];
 
 const EMPTY_FORM = {
@@ -138,7 +138,7 @@ function SortableSkillRow({
         >
           {skill.visible ? <Eye className="size-4" /> : <EyeOff className="size-4 text-muted-foreground" />}
         </Button>
-        <Button variant="ghost" size="icon" onClick={() => onEdit(skill)}>
+        <Button variant="ghost" size="icon" onClick={() => onEdit(skill)} aria-label={`Edit ${skill.name}`}>
           <Pencil className="size-4" />
         </Button>
         <Button
@@ -146,6 +146,7 @@ function SortableSkillRow({
           size="icon"
           onClick={() => onDelete(skill)}
           className="text-destructive hover:text-destructive"
+          aria-label={`Delete ${skill.name}`}
         >
           <Trash2 className="size-4" />
         </Button>

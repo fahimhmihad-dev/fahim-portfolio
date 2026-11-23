@@ -75,7 +75,10 @@ export default function SkillsSection({
                 width={44}
                 height={44}
                 loading="lazy"
-                className="relative size-9 object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 md:size-11"
+                className={cn(
+                  "relative size-9 object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 md:size-11",
+                  ["nextjs", "threejs", "vercel"].includes(skill.slug.toLowerCase()) && "dark:invert"
+                )}
               />
             ) : (
               <div

@@ -19,8 +19,9 @@ export async function generateMetadata({
   const post = await getPublishedBlogPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
 
+  const rawTitle = post.seo_title || post.title;
   return {
-    title: post.seo_title || post.title,
+    title: rawTitle.includes("|") ? { absolute: rawTitle } : rawTitle,
     description: post.seo_description || post.summary,
     openGraph: {
       title: post.seo_title || post.title,

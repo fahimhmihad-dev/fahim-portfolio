@@ -1,5 +1,5 @@
 -- ============================================================================
--- Fahim H. Mihad Portfolio — Initial Seed Data (Editable from /admin)
+-- Fahim H. Mihad Portfolio â€” Initial Seed Data (Editable from /admin)
 -- ============================================================================
 
 -- 1. Authorized Admin
@@ -29,7 +29,7 @@ values (
     "instagram": ""
   }'::jsonb,
   'Fahim H. Mihad | Full Stack Web Developer',
-  'Explore the interactive 3D portfolio of Fahim H. Mihad — full-stack developer crafting fast web applications, cloud systems, and thoughtful digital interfaces.',
+  'Explore the interactive 3D portfolio of Fahim H. Mihad â€” full-stack developer crafting fast web applications, cloud systems, and thoughtful digital interfaces.',
   array['Fahim H. Mihad', 'Full Stack Developer', 'Web Developer', 'Next.js', 'TypeScript', 'React', 'Three.js', 'Portfolio']
 )
 on conflict (id) do nothing;
@@ -65,35 +65,35 @@ on conflict (id) do nothing;
 -- 4. Skills (18 skills -> clean 6x3 3D mechanical keyboard layout)
 insert into public.skills (slug, name, short_description, icon, color, category, shortcut, sort_order, visible)
 values
-  ('typescript', 'TypeScript', 'Typed JavaScript for scalable, fearless refactors across client and server.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg', '#3178c6', 'Frontend', 'KeyQ', 0, true),
-  ('javascript', 'JavaScript', 'The language of the web powering interactive interfaces and modern runtimes.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg', '#f0db4f', 'Frontend', 'KeyW', 1, true),
-  ('react', 'React', 'Component-driven UI engineering with hooks, suspense, and concurrent rendering.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', '#61dafb', 'Frontend', 'KeyE', 2, true),
-  ('nextjs', 'Next.js', 'Full-stack React framework with App Router, Server Components, and instant edge caching.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg', '#ffffff', 'Frontend', 'KeyR', 3, true),
-  ('tailwindcss', 'Tailwind CSS', 'Utility-first styling system for rapid, consistent, responsive interfaces.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg', '#38bdf8', 'Frontend', 'KeyT', 4, true),
-  ('threejs', 'Three.js', 'Real-time 3D WebGL scenes, shaders, and interactive spatial experiences.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threejs/threejs-original.svg', '#a855f7', 'Frontend', 'KeyY', 5, true),
+  ('typescript', 'TypeScript', 'Typed JavaScript for scalable, fearless refactors across client and server.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/typescript/typescript-original.svg', '#3178c6', 'Frontend', 'KeyQ', 0, true),
+  ('javascript', 'JavaScript', 'The language of the web powering interactive interfaces and modern runtimes.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg', '#f0db4f', 'Frontend', 'KeyW', 1, true),
+  ('react', 'React', 'Component-driven UI engineering with hooks, suspense, and concurrent rendering.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg', '#61dafb', 'Frontend', 'KeyE', 2, true),
+  ('nextjs', 'Next.js', 'Full-stack React framework with App Router, Server Components, and instant edge caching.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nextjs/nextjs-original.svg', '#ffffff', 'Frontend', 'KeyR', 3, true),
+  ('tailwindcss', 'Tailwind CSS', 'Utility-first styling system for rapid, consistent, responsive interfaces.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tailwindcss/tailwindcss-original.svg', '#38bdf8', 'Frontend', 'KeyT', 4, true),
+  ('threejs', 'Three.js', 'Real-time 3D WebGL scenes, shaders, and interactive spatial experiences.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/threejs/threejs-original.svg', '#a855f7', 'Frontend', 'KeyY', 5, true),
 
-  ('nodejs', 'Node.js', 'Event-driven server runtime for APIs, workers, and realtime services.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg', '#6cc24a', 'Backend', 'KeyA', 6, true),
-  ('python', 'Python', 'Clean backend scripting, automation pipelines, and AI/ML workflows.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', '#3776ab', 'Backend', 'KeyS', 7, true),
-  ('postgresql', 'PostgreSQL', 'Rock-solid relational database with JSONB, indexing, and Row Level Security.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg', '#336791', 'Database', 'KeyD', 8, true),
-  ('supabase', 'Supabase', 'Postgres backend with Auth, Realtime, Storage, and Edge Functions.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg', '#3ecf8e', 'Backend', 'KeyF', 9, true),
-  ('mongodb', 'MongoDB', 'Flexible document store for rapid prototyping and high-throughput workloads.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg', '#47a248', 'Database', 'KeyG', 10, true),
-  ('redis', 'Redis', 'In-memory caching, rate limiting, queues, and pub/sub messaging.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg', '#dc382d', 'Database', 'KeyH', 11, true),
+  ('nodejs', 'Node.js', 'Event-driven server runtime for APIs, workers, and realtime services.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nodejs/nodejs-original.svg', '#6cc24a', 'Backend', 'KeyA', 6, true),
+  ('python', 'Python', 'Clean backend scripting, automation pipelines, and AI/ML workflows.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg', '#3776ab', 'Backend', 'KeyS', 7, true),
+  ('postgresql', 'PostgreSQL', 'Rock-solid relational database with JSONB, indexing, and Row Level Security.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg', '#336791', 'Database', 'KeyD', 8, true),
+  ('supabase', 'Supabase', 'Postgres backend with Auth, Realtime, Storage, and Edge Functions.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/supabase/supabase-original.svg', '#3ecf8e', 'Backend', 'KeyF', 9, true),
+  ('mongodb', 'MongoDB', 'Flexible document store for rapid prototyping and high-throughput workloads.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mongodb/mongodb-original.svg', '#47a248', 'Database', 'KeyG', 10, true),
+  ('redis', 'Redis', 'In-memory caching, rate limiting, queues, and pub/sub messaging.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/redis/redis-original.svg', '#dc382d', 'Database', 'KeyH', 11, true),
 
-  ('docker', 'Docker', 'Reproducible container builds for predictable local dev and production deploys.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg', '#2496ed', 'DevOps', 'KeyZ', 12, true),
-  ('git', 'Git', 'Version control, clean branching workflows, and collaborative code reviews.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg', '#f1502f', 'Tools', 'KeyX', 13, true),
-  ('linux', 'Linux', 'Server administration, shell automation, and production observability.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg', '#eab308', 'DevOps', 'KeyC', 14, true),
-  ('aws', 'AWS', 'Cloud compute, storage, CDN, and managed infrastructure at scale.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg', '#ff9900', 'DevOps', 'KeyV', 15, true),
-  ('vercel', 'Vercel', 'Zero-config edge deployments, preview URLs, and serverless compute.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg', '#e2e8f0', 'DevOps', 'KeyB', 16, true),
-  ('figma', 'Figma', 'Design systems, interactive prototypes, and pixel-accurate developer handoff.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg', '#f24e1e', 'Tools', 'KeyN', 17, true)
+  ('docker', 'Docker', 'Reproducible container builds for predictable local dev and production deploys.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/docker/docker-original.svg', '#2496ed', 'DevOps', 'KeyZ', 12, true),
+  ('git', 'Git', 'Version control, clean branching workflows, and collaborative code reviews.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg', '#f1502f', 'Tools', 'KeyX', 13, true),
+  ('linux', 'Linux', 'Server administration, shell automation, and production observability.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/linux/linux-original.svg', '#eab308', 'DevOps', 'KeyC', 14, true),
+  ('aws', 'AWS', 'Cloud compute, storage, CDN, and managed infrastructure at scale.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/amazonwebservices/amazonwebservices-original-wordmark.svg', '#ff9900', 'DevOps', 'KeyV', 15, true),
+  ('vercel', 'Vercel', 'Zero-config edge deployments, preview URLs, and serverless compute.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vercel/vercel-original.svg', '#e2e8f0', 'DevOps', 'KeyB', 16, true),
+  ('figma', 'Figma', 'Design systems, interactive prototypes, and pixel-accurate developer handoff.', 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/figma/figma-original.svg', '#f24e1e', 'Tools', 'KeyN', 17, true)
 on conflict (slug) do nothing;
 
--- 5. Experiences (Placeholder entries — replace from /admin/experience)
+-- 5. Experiences (Placeholder entries â€” replace from /admin/experience)
 insert into public.experiences (role, company, location, start_date, end_date, is_current, bullets, tech_tags, sort_order, visible)
 select * from (
   values
     (
       'Full Stack Software Engineer (Sample)',
-      'Your Current Company · Replace in Admin',
+      'Your Current Company Â· Replace in Admin',
       'Remote',
       'Jan 2025',
       null,
@@ -110,7 +110,7 @@ select * from (
     ),
     (
       'Frontend & Product Developer (Sample)',
-      'Previous Studio · Replace in Admin',
+      'Previous Studio Â· Replace in Admin',
       'Dhaka / Remote',
       'Jun 2023',
       'Dec 2024',
@@ -127,7 +127,7 @@ select * from (
 ) as v(role, company, location, start_date, end_date, is_current, bullets, tech_tags, sort_order, visible)
 where not exists (select 1 from public.experiences);
 
--- 6. Projects (Placeholder entries — replace from /admin/projects)
+-- 6. Projects (Placeholder entries â€” replace from /admin/projects)
 insert into public.projects (
   slug, title, category, tagline, description, cover_url, backdrop_url, gallery,
   tech_frontend, tech_backend, tech_tags, live_url, repo_url, featured, sort_order, visible
@@ -138,7 +138,7 @@ values
     'PulseBoard Analytics',
     'Full Stack SaaS',
     'Real-time product metrics and team workspace dashboard (Sample Project).',
-    E'### Overview\n\n**PulseBoard Analytics** is a sample project entry showcasing how rich Markdown write-ups, technology docks, and interactive screenshot carousels appear inside your portfolio modal.\n\n### Key Highlights\n\n- **Real-time telemetry** with sub-second chart updates and customizable workspace views.\n- **Role-based access control** backed by PostgreSQL Row Level Security.\n- **Fully editable** — swap this title, cover image, gallery screenshots, links, and description from `/admin/projects`.',
+    E'### Overview\n\n**PulseBoard Analytics** is a sample project entry showcasing how rich Markdown write-ups, technology docks, and interactive screenshot carousels appear inside your portfolio modal.\n\n### Key Highlights\n\n- **Real-time telemetry** with sub-second chart updates and customizable workspace views.\n- **Role-based access control** backed by PostgreSQL Row Level Security.\n- **Fully editable** â€” swap this title, cover image, gallery screenshots, links, and description from `/admin/projects`.',
     '/placeholders/project-1.svg',
     '/placeholders/bg-1.svg',
     array['/placeholders/project-1.svg', '/placeholders/project-2.svg'],
@@ -173,7 +173,7 @@ values
     'sample-3d-experience',
     'Interactive 3D Portfolio',
     'Creative Web / 3D',
-    'This very portfolio — procedural 3D mechanical keyboard + full Supabase CMS.',
+    'This very portfolio â€” procedural 3D mechanical keyboard + full Supabase CMS.',
     E'### Overview\n\nA custom-engineered 3D developer portfolio built with **Next.js 16**, **Three.js / React Three Fiber**, **GSAP ScrollTrigger**, and a full **Supabase-powered Admin Dashboard**.\n\n### Features\n\n- Procedurally sculpted interactive 3D mechanical keyboard dynamically generated from database skills.\n- Instant cache revalidation on every CMS update.\n- Full dark/light theming, Lenis smooth scroll, and accessible reduced-motion fallbacks.',
     '/placeholders/project-3.svg',
     '/placeholders/bg-3.svg',
@@ -189,7 +189,7 @@ values
   )
 on conflict (slug) do nothing;
 
--- 7. Blog Posts (Placeholder entries — edit or delete from /admin/blog)
+-- 7. Blog Posts (Placeholder entries â€” edit or delete from /admin/blog)
 insert into public.blog_posts (
   title, slug, summary, content, author, tags, status, published_at, seo_title, seo_description
 )
@@ -210,7 +210,7 @@ values
     'Notes on Performance, Motion, and Accessibility on the Modern Web',
     'performance-motion-accessibility',
     'Practical techniques for keeping 3D web experiences fast, responsive, and respectful of user motion preferences.',
-    E'Rich visuals should never come at the cost of usability or frame rate. Here are a few principles baked into this portfolio:\n\n## 1. Lazy-Load Heavy Graphics\n\nThe Three.js canvas is dynamically imported on the client (`ssr: false`) so initial HTML paints immediately and search crawlers receive full semantic content.\n\n## 2. Respect `prefers-reduced-motion`\n\nUsers who prefer reduced motion—or toggle **Reduce motion** in the navigation drawer—automatically receive a crisp, fast 2D layout with zero distracting animations.\n\n## 3. Adaptive Pixel Ratio\n\nCapping WebGL DPR on mobile devices keeps batteries cool and animations smooth.',
+    E'Rich visuals should never come at the cost of usability or frame rate. Here are a few principles baked into this portfolio:\n\n## 1. Lazy-Load Heavy Graphics\n\nThe Three.js canvas is dynamically imported on the client (`ssr: false`) so initial HTML paints immediately and search crawlers receive full semantic content.\n\n## 2. Respect `prefers-reduced-motion`\n\nUsers who prefer reduced motionâ€”or toggle **Reduce motion** in the navigation drawerâ€”automatically receive a crisp, fast 2D layout with zero distracting animations.\n\n## 3. Adaptive Pixel Ratio\n\nCapping WebGL DPR on mobile devices keeps batteries cool and animations smooth.',
     'Fahim H. Mihad',
     array['performance', 'accessibility', 'frontend'],
     'published',

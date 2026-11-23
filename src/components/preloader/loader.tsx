@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "./style.module.scss";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { opacity, slideUp } from "./anim";
@@ -39,14 +38,32 @@ export default function Loader() {
   };
 
   return (
-    <motion.div variants={slideUp} initial="initial" exit="exit" className={styles.introduction}>
+    <motion.div
+      variants={slideUp}
+      initial="initial"
+      exit="exit"
+      className="fixed left-0 top-0 h-dvh w-dvw flex items-end justify-end px-8 sm:px-14 pb-8 z-[1200] bg-background"
+    >
       {dimension.width > 0 && (
         <>
-          <motion.p variants={opacity} initial="initial" animate="enter">
+          <motion.p
+            variants={opacity}
+            initial="initial"
+            animate="enter"
+            className="relative z-10 flex items-center text-foreground font-display font-bold text-5xl sm:text-7xl"
+          >
             {(loadingPercent - (loadingPercent % 5)).toFixed(0)} %
           </motion.p>
-          <svg>
-            <motion.path variants={curve} initial="initial" exit="exit" />
+          <svg
+            className="absolute top-0 left-0 w-full pointer-events-none"
+            style={{ height: "calc(100% + 300px)" }}
+          >
+            <motion.path
+              variants={curve}
+              initial="initial"
+              exit="exit"
+              style={{ fill: "hsl(var(--background))" }}
+            />
           </svg>
         </>
       )}

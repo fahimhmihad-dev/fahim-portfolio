@@ -95,7 +95,7 @@ function SortableExperienceCard({
       </div>
 
       <div className="flex items-center gap-1 shrink-0">
-        <Button variant="ghost" size="icon" onClick={() => onEdit(exp)}>
+        <Button variant="ghost" size="icon" onClick={() => onEdit(exp)} aria-label={`Edit ${exp.role}`}>
           <Pencil className="size-4" />
         </Button>
         <Button
@@ -103,6 +103,7 @@ function SortableExperienceCard({
           size="icon"
           onClick={() => onDelete(exp)}
           className="text-destructive hover:text-destructive"
+          aria-label={`Delete ${exp.role}`}
         >
           <Trash2 className="size-4" />
         </Button>

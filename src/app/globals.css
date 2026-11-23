@@ -203,6 +203,9 @@ body > canvas {
 .portfolio-slider .splide__arrow--prev {
   left: 0.75rem;
 }
+.portfolio-slider .splide__arrow--prev svg {
+  transform: none;
+}
 .portfolio-slider .splide__arrow--next {
   right: 0.75rem;
 }

@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import styles from "./style.module.scss";
 import { height, opacity } from "../anim";
 import NavBody from "./body";
 import MotionToggle from "@/components/motion-toggle";
 import type { NavLinkItem } from "@/types/database";
-import { cn } from "@/lib/utils";
 
 interface NavDrawerProps {
   links: NavLinkItem[];
@@ -31,10 +29,10 @@ export default function NavDrawer({ links, setIsActive }: NavDrawerProps) {
       animate="enter"
       exit="exit"
       onClick={() => setIsActive(false)}
-      className={cn(styles.nav, "relative pb-10")}
+      className="overflow-hidden relative max-w-7xl mx-auto"
     >
-      <div className={cn(styles.wrapper, "flex justify-end sm:justify-start")}>
-        <div className={styles.container}>
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 pt-6 pb-14">
+        <div className="flex flex-col justify-between flex-1 w-full">
           <NavBody
             links={visibleLinks}
             selectedLink={selectedLink}
@@ -42,11 +40,12 @@ export default function NavDrawer({ links, setIsActive }: NavDrawerProps) {
             setIsActive={setIsActive}
           />
         </div>
+
         <motion.div
           variants={opacity}
           initial="initial"
           animate={selectedLink.isActive ? "open" : "closed"}
-          className={styles.imageContainer}
+          className="hidden lg:block w-[420px] h-[280px] relative shrink-0"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -61,9 +60,9 @@ export default function NavDrawer({ links, setIsActive }: NavDrawerProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ delay: 0.35, duration: 0.35 }}
+        transition={{ delay: 0.25, duration: 0.3 }}
         onClick={(e) => e.stopPropagation()}
-        className="absolute bottom-2 right-0"
+        className="absolute bottom-3 right-0"
       >
         <MotionToggle />
       </motion.div>

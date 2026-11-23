@@ -58,7 +58,15 @@ function buildDockItems(tags: string[], skillMap: Map<string, Skill>) {
       title: matched?.name || tag,
       icon: matched?.icon ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={matched.icon} alt={matched.name} className="w-full h-full object-contain" />
+        <img
+          src={matched.icon}
+          alt={matched.name}
+          className={
+            ["nextjs", "threejs", "vercel"].includes(matched.slug.toLowerCase())
+              ? "w-full h-full object-contain dark:invert"
+              : "w-full h-full object-contain"
+          }
+        />
       ) : (
         <Code2 className="w-4 h-4 text-foreground" />
       ),
