@@ -1,19 +1,21 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Loader2, Save } from "lucide-react";
+import { Loader2, RotateCcw, Save, Sparkles } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import MediaUploader from "@/components/admin/media-uploader";
-import type { Profile } from "@/types/database";
+import type { PhotoAnimationStyle, Profile } from "@/types/database";
 
 const schema = z.object({
   name: z.string().min(1, "Required"),
@@ -25,6 +27,9 @@ const schema = z.object({
   location: z.string(),
   email: z.string().email("Invalid email"),
   avatar_url: z.string(),
+  show_animated_photo: z.boolean(),
+  photo_animation_style: z.enum(["float", "tilt", "minimal"]),
+  photo_alt: z.string(),
   resume_url: z.string(),
   github: z.string(),
   linkedin: z.string(),
@@ -55,7 +60,10 @@ export default function AdminProfilePage() {
       bio: "",
       location: "",
       email: "",
-      avatar_url: "",
+      avatar_url: "/me/portrait-2x.webp",
+      show_animated_photo: true,
+      photo_animation_style: "tilt",
+      photo_alt: "Portrait of Fahim H. Mihad",
       resume_url: "",
       github: "",
       linkedin: "",
@@ -69,6 +77,11 @@ export default function AdminProfilePage() {
       og_image_url: "",
     },
   });
+
+  const watchedAvatar = useWatch({ control: form.control, name: "avatar_url" });
+  const watchedShowPhoto = useWatch({ control: form.control, name: "show_animated_photo" });
+  const watchedPhotoStyle = useWatch({ control: form.control, name: "photo_animation_style" });
+  const watchedPhotoAlt = useWatch({ control: form.control, name: "photo_alt" });
 
   useEffect(() => {
     fetch("/api/admin/profile")
@@ -85,6 +98,9 @@ export default function AdminProfilePage() {
           location: data.location || "",
           email: data.email || "",
           avatar_url: data.avatar_url || "",
+          show_animated_photo: data.show_animated_photo ?? true,
+          photo_animation_style: (data.photo_animation_style as PhotoAnimationStyle) || "tilt",
+          photo_alt: data.photo_alt || "Portrait of Fahim H. Mihad",
           resume_url: data.resume_url || "",
           github: data.socials?.github || "",
           linkedin: data.socials?.linkedin || "",
@@ -114,6 +130,9 @@ export default function AdminProfilePage() {
         location: v.location,
         email: v.email,
         avatar_url: v.avatar_url || null,
+        show_animated_photo: v.show_animated_photo,
+        photo_animation_style: v.photo_animation_style,
+        photo_alt: v.photo_alt || `Portrait of ${v.name}`,
         resume_url: v.resume_url || null,
         socials: {
           github: v.github,
@@ -163,7 +182,8 @@ export default function AdminProfilePage() {
         <div>
           <h1 className="font-display text-2xl font-bold">Profile &amp; Hero</h1>
           <p className="text-sm text-muted-foreground">
-            Controls your Hero identity, résumé download, social links, and SEO metadata.
+            Controls your Hero identity, animated portrait, résumé download, social links, and SEO
+            metadata.
           </p>
         </div>
         <Button type="submit" disabled={saving} className="gap-2">
@@ -172,6 +192,133 @@ export default function AdminProfilePage() {
         </Button>
       </div>
 
+      {/* Animated Personal Photo Card */}
+      <Card>
+        <CardHeader>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Sparkles className="size-4 text-primary" />
+                Animated Photo
+              </CardTitle>
+              <CardDescription>
+                Upload or replace your portrait, toggle visibility, and choose the hero animation
+                style. Turning this off restores the original hero layout exactly.
+              </CardDescription>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <Label htmlFor="show-animated-photo" className="text-xs text-muted-foreground">
+                {watchedShowPhoto ? "Visible" : "Hidden"}
+              </Label>
+              <Switch
+                id="show-animated-photo"
+                checked={Boolean(watchedShowPhoto)}
+                onCheckedChange={(checked) =>
+                  form.setValue("show_animated_photo", checked, { shouldDirty: true })
+                }
+              />
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 items-start">
+            {/* Live Preview */}
+            <div className="flex flex-col items-center gap-2.5">
+              <div className="relative w-44 h-44 rounded-3xl p-[1.5px] bg-gradient-to-br from-foreground/25 via-border to-foreground/10 shadow-md">
+                <div className="relative h-full w-full overflow-hidden rounded-[22px] bg-muted flex items-center justify-center">
+                  {watchedAvatar ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={watchedAvatar}
+                      alt={watchedPhotoAlt || "Portrait preview"}
+                      className={`h-full w-full object-cover object-top transition-opacity ${
+                        watchedShowPhoto ? "opacity-100" : "opacity-35 grayscale"
+                      }`}
+                    />
+                  ) : (
+                    <span className="text-xs text-muted-foreground px-4 text-center">
+                      No image selected
+                    </span>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Badge variant={watchedShowPhoto && watchedAvatar ? "default" : "secondary"}>
+                  {watchedShowPhoto && watchedAvatar ? "Active" : "Off"}
+                </Badge>
+                <Badge variant="outline" className="capitalize">
+                  {watchedPhotoStyle}
+                </Badge>
+              </div>
+            </div>
+
+            {/* Controls */}
+            <div className="space-y-4">
+              <div className="space-y-1.5">
+                <Label htmlFor="profile-avatar-url">Portrait Image URL</Label>
+                <div className="flex flex-wrap gap-2">
+                  <Input
+                    id="profile-avatar-url"
+                    className="flex-1 min-w-[200px]"
+                    {...form.register("avatar_url")}
+                    placeholder="/me/portrait-2x.webp or upload via Storage"
+                  />
+                  <MediaUploader
+                    folder="avatars"
+                    accept="image/*"
+                    label="Upload Photo"
+                    onUploaded={(url) => form.setValue("avatar_url", url, { shouldDirty: true })}
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    title="Reset to built-in optimized portrait"
+                    onClick={() =>
+                      form.setValue("avatar_url", "/me/portrait-2x.webp", { shouldDirty: true })
+                    }
+                    className="gap-1 text-xs"
+                  >
+                    <RotateCcw className="size-3.5" /> Default
+                  </Button>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <Label htmlFor="photo-animation-style">Animation Style</Label>
+                  <select
+                    id="photo-animation-style"
+                    value={watchedPhotoStyle}
+                    onChange={(e) =>
+                      form.setValue(
+                        "photo_animation_style",
+                        e.target.value as PhotoAnimationStyle,
+                        { shouldDirty: true }
+                      )
+                    }
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
+                  >
+                    <option value="tilt">3D Tilt + Float + Glow (Default)</option>
+                    <option value="float">Gentle Float + Parallax</option>
+                    <option value="minimal">Minimal (Fade Only)</option>
+                  </select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="photo-alt-text">Accessible Alt Text</Label>
+                  <Input
+                    id="photo-alt-text"
+                    {...form.register("photo_alt")}
+                    placeholder="Portrait of Fahim H. Mihad"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Identity &amp; Hero Copy</CardTitle>
@@ -179,63 +326,62 @@ export default function AdminProfilePage() {
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label>Full Name</Label>
-            <Input {...form.register("name")} />
+            <Label htmlFor="profile-name">Full Name</Label>
+            <Input id="profile-name" {...form.register("name")} />
           </div>
           <div className="space-y-2">
-            <Label>Greeting Eyebrow</Label>
-            <Input {...form.register("greeting")} placeholder="Hi, I am" />
+            <Label htmlFor="profile-greeting">Greeting Eyebrow</Label>
+            <Input id="profile-greeting" {...form.register("greeting")} placeholder="Hi, I am" />
           </div>
           <div className="space-y-2">
-            <Label>Hero Heading Line 1</Label>
-            <Input {...form.register("first_name")} placeholder="Fahim H." />
+            <Label htmlFor="profile-first-name">Hero Heading Line 1</Label>
+            <Input id="profile-first-name" {...form.register("first_name")} placeholder="Fahim H." />
           </div>
           <div className="space-y-2">
-            <Label>Hero Heading Line 2</Label>
-            <Input {...form.register("last_name")} placeholder="Mihad" />
+            <Label htmlFor="profile-last-name">Hero Heading Line 2</Label>
+            <Input id="profile-last-name" {...form.register("last_name")} placeholder="Mihad" />
           </div>
           <div className="space-y-2">
-            <Label>Role / Headline</Label>
-            <Input {...form.register("title")} placeholder="A Full Stack Web Developer" />
+            <Label htmlFor="profile-title">Role / Headline</Label>
+            <Input
+              id="profile-title"
+              {...form.register("title")}
+              placeholder="A Full Stack Web Developer"
+            />
           </div>
           <div className="space-y-2">
-            <Label>Contact Email</Label>
-            <Input type="email" {...form.register("email")} />
+            <Label htmlFor="profile-email">Contact Email</Label>
+            <Input id="profile-email" type="email" {...form.register("email")} />
           </div>
           <div className="space-y-2 md:col-span-2">
-            <Label>Location</Label>
-            <Input {...form.register("location")} placeholder="Dhaka, Bangladesh" />
+            <Label htmlFor="profile-location">Location</Label>
+            <Input
+              id="profile-location"
+              {...form.register("location")}
+              placeholder="Dhaka, Bangladesh"
+            />
           </div>
           <div className="space-y-2 md:col-span-2">
-            <Label>Bio / Summary</Label>
-            <Textarea rows={4} {...form.register("bio")} />
+            <Label htmlFor="profile-bio">Bio / Summary</Label>
+            <Textarea id="profile-bio" rows={4} {...form.register("bio")} />
           </div>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Avatar &amp; Résumé PDF</CardTitle>
-          <CardDescription>Upload directly to Supabase Storage or paste a URL.</CardDescription>
+          <CardTitle className="text-lg">Résumé PDF</CardTitle>
+          <CardDescription>Upload directly to Supabase Storage or paste a PDF URL.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label>Avatar URL</Label>
+            <Label htmlFor="profile-resume-url">Résumé PDF URL</Label>
             <div className="flex gap-2">
-              <Input {...form.register("avatar_url")} placeholder="https://..." />
-              <MediaUploader
-                folder="avatars"
-                accept="image/*"
-                label="Upload Avatar"
-                onUploaded={(url) => form.setValue("avatar_url", url, { shouldDirty: true })}
+              <Input
+                id="profile-resume-url"
+                {...form.register("resume_url")}
+                placeholder="Upload PDF or paste URL"
               />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <Label>Résumé PDF URL</Label>
-            <div className="flex gap-2">
-              <Input {...form.register("resume_url")} placeholder="Upload PDF or paste URL" />
               <MediaUploader
                 folder="resumes"
                 accept="application/pdf"
@@ -253,28 +399,40 @@ export default function AdminProfilePage() {
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label>GitHub URL</Label>
-            <Input {...form.register("github")} placeholder="https://github.com/..." />
+            <Label htmlFor="social-github">GitHub URL</Label>
+            <Input id="social-github" {...form.register("github")} placeholder="https://github.com/..." />
           </div>
           <div className="space-y-2">
-            <Label>LinkedIn URL</Label>
-            <Input {...form.register("linkedin")} placeholder="https://linkedin.com/in/..." />
+            <Label htmlFor="social-linkedin">LinkedIn URL</Label>
+            <Input
+              id="social-linkedin"
+              {...form.register("linkedin")}
+              placeholder="https://linkedin.com/in/..."
+            />
           </div>
           <div className="space-y-2">
-            <Label>X / Twitter URL</Label>
-            <Input {...form.register("twitter")} placeholder="https://x.com/..." />
+            <Label htmlFor="social-twitter">X / Twitter URL</Label>
+            <Input id="social-twitter" {...form.register("twitter")} placeholder="https://x.com/..." />
           </div>
           <div className="space-y-2">
-            <Label>Instagram URL</Label>
-            <Input {...form.register("instagram")} placeholder="https://instagram.com/..." />
+            <Label htmlFor="social-instagram">Instagram URL</Label>
+            <Input
+              id="social-instagram"
+              {...form.register("instagram")}
+              placeholder="https://instagram.com/..."
+            />
           </div>
           <div className="space-y-2">
-            <Label>YouTube URL</Label>
-            <Input {...form.register("youtube")} placeholder="https://youtube.com/..." />
+            <Label htmlFor="social-youtube">YouTube URL</Label>
+            <Input
+              id="social-youtube"
+              {...form.register("youtube")}
+              placeholder="https://youtube.com/..."
+            />
           </div>
           <div className="space-y-2">
-            <Label>Website URL</Label>
-            <Input {...form.register("website")} placeholder="https://..." />
+            <Label htmlFor="social-website">Website URL</Label>
+            <Input id="social-website" {...form.register("website")} placeholder="https://..." />
           </div>
         </CardContent>
       </Card>
@@ -285,21 +443,25 @@ export default function AdminProfilePage() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label>SEO Page Title</Label>
-            <Input {...form.register("seo_title")} />
+            <Label htmlFor="seo-title">SEO Page Title</Label>
+            <Input id="seo-title" {...form.register("seo_title")} />
           </div>
           <div className="space-y-2">
-            <Label>SEO Meta Description</Label>
-            <Textarea rows={3} {...form.register("seo_description")} />
+            <Label htmlFor="seo-desc">SEO Meta Description</Label>
+            <Textarea id="seo-desc" rows={3} {...form.register("seo_description")} />
           </div>
           <div className="space-y-2">
-            <Label>Keywords (comma-separated)</Label>
-            <Input {...form.register("seo_keywords")} />
+            <Label htmlFor="seo-keywords">Keywords (comma-separated)</Label>
+            <Input id="seo-keywords" {...form.register("seo_keywords")} />
           </div>
           <div className="space-y-2">
-            <Label>Custom OG Image URL (optional — dynamic OG image generated automatically)</Label>
+            <Label htmlFor="seo-og">Custom OG Image URL (optional)</Label>
             <div className="flex gap-2">
-              <Input {...form.register("og_image_url")} placeholder="Leave blank for dynamic OG" />
+              <Input
+                id="seo-og"
+                {...form.register("og_image_url")}
+                placeholder="Leave blank for dynamic OG"
+              />
               <MediaUploader
                 folder="seo"
                 accept="image/*"
