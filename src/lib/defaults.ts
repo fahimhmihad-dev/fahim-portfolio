@@ -16,7 +16,10 @@ export const DEFAULT_PROFILE: Profile = {
   title: "A Full Stack Web Developer",
   bio: "Software engineer crafting interactive web experiences, scalable backend architectures, and clean modern products.",
   location: "Dhaka, Bangladesh",
-  avatar_url: null,
+  avatar_url: "/me/portrait-2x.webp",
+  show_animated_photo: true,
+  photo_animation_style: "tilt",
+  photo_alt: "Portrait of Fahim H. Mihad",
   resume_url: null,
   email: "fahimhmihad@gmail.com",
   socials: {

@@ -12,6 +12,9 @@ const profileSchema = z.object({
   bio: z.string().max(2000).default(""),
   location: z.string().max(120).default(""),
   avatar_url: z.string().nullable().optional(),
+  show_animated_photo: z.boolean().default(true),
+  photo_animation_style: z.enum(["float", "tilt", "minimal"]).default("tilt"),
+  photo_alt: z.string().max(160).default("Portrait of Fahim H. Mihad"),
   resume_url: z.string().nullable().optional(),
   email: z.string().trim().email(),
   socials: z

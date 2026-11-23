@@ -8,6 +8,8 @@ export interface SocialLinks {
   website?: string;
 }
 
+export type PhotoAnimationStyle = "float" | "tilt" | "minimal";
+
 export interface Profile {
   id: number;
   name: string;
@@ -18,6 +20,9 @@ export interface Profile {
   bio: string;
   location: string;
   avatar_url: string | null;
+  show_animated_photo: boolean;
+  photo_animation_style: PhotoAnimationStyle;
+  photo_alt: string;
   resume_url: string | null;
   email: string;
   socials: SocialLinks;
