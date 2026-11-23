@@ -155,9 +155,9 @@ export default function HeroSection({ profile }: { profile: Profile }) {
         )}
       </div>
 
-      <div className="absolute top-[calc(100dvh-5.5rem)] md:top-auto md:bottom-8 left-1/2 -translate-x-1/2 z-10">
-        <ScrollDownIcon />
-      </div>
+        <div className="absolute top-[calc(100dvh-5.5rem)] md:top-auto md:bottom-8 left-1/2 -translate-x-1/2 z-10">
+          <ScrollDownIcon />
+        </div>
     </SectionWrapper>
   );
 }

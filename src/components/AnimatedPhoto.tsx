@@ -139,7 +139,7 @@ export default function AnimatedPhoto({
                 rotateY: enableTilt ? rotateY : 0,
                 transformStyle: enableTilt ? "preserve-3d" : undefined,
               }}
-              className="group relative w-[184px] h-[184px] md:w-[168px] md:h-[168px] lg:w-[204px] lg:h-[204px] will-change-transform"
+              className="group relative w-[116px] h-[116px] sm:w-[140px] sm:h-[140px] md:w-[168px] md:h-[168px] lg:w-[204px] lg:h-[204px] will-change-transform"
             >
               {/* Subtle theme-aware ambient glow behind frame */}
               <div
@@ -169,7 +169,7 @@ export default function AnimatedPhoto({
                     width={512}
                     height={512}
                     priority={priority}
-                    sizes="(max-width: 768px) 184px, (max-width: 1024px) 168px, 204px"
+                    sizes="(max-width: 640px) 116px, (max-width: 768px) 140px, (max-width: 1024px) 168px, 204px"
                     placeholder={isLocalPortrait ? "blur" : "empty"}
                     blurDataURL={isLocalPortrait ? PORTRAIT_BLUR_DATA_URL : undefined}
                     className={cn(
