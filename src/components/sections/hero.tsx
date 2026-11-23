@@ -141,7 +141,7 @@ export default function HeroSection({ profile }: { profile: Profile }) {
 
         {/* Right column reserved for the floating 3D mechanical keyboard + optional animated portrait */}
         {profile.show_animated_photo && profile.avatar_url ? (
-          <div className="col-span-1 pointer-events-none flex items-center justify-center pt-10 pb-16 md:h-[calc(100dvh-4rem)] md:items-end md:justify-end md:pt-0 md:pb-24 lg:pb-12 md:pr-6 lg:pr-12 z-[2]">
+          <div className="pointer-events-none absolute bottom-6 right-5 z-[2] md:static md:col-span-1 md:flex md:h-[calc(100dvh-4rem)] md:items-end md:justify-end md:pb-24 lg:pb-12 md:pr-6 lg:pr-12">
             <AnimatedPhoto
               src={profile.avatar_url}
               alt={profile.photo_alt || `Portrait of ${profile.name}`}
@@ -155,9 +155,9 @@ export default function HeroSection({ profile }: { profile: Profile }) {
         )}
       </div>
 
-        <div className="absolute top-[calc(100dvh-5.5rem)] md:top-auto md:bottom-8 left-1/2 -translate-x-1/2 z-10">
-          <ScrollDownIcon />
-        </div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+        <ScrollDownIcon />
+      </div>
     </SectionWrapper>
   );
 }
